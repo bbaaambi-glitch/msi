@@ -13,32 +13,36 @@ const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
 hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-label', navLinks.classList.contains('open') ? '메뉴 닫기' : '메뉴 열기');
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-  });
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// Itinerary tabs
-const tabs = document.querySelectorAll('.itab');
-const days = document.querySelectorAll('.iday');
+// Checklist
+const TOTAL = 8;
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const dayNum = tab.dataset.day;
-    tabs.forEach(t => t.classList.remove('active'));
-    days.forEach(d => d.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(`day-${dayNum}`).classList.add('active');
-  });
-});
+function toggleCheck(id) {
+  const el = document.getElementById(id);
+  const card = el.closest('.cl-card');
+  const checked = el.classList.toggle('checked');
+  card.classList.toggle('cl-done', checked);
+  updateProgress();
+}
 
-// Intersection Observer for fade-in animations
-const observerOpts = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+function updateProgress() {
+  const done = document.querySelectorAll('.cl-status.checked').length;
+  document.getElementById('clProgressText').textContent = `${done} / ${TOTAL}`;
+  document.getElementById('clProgressFill').style.width = `${(done / TOTAL) * 100}%`;
+}
+
+// Scroll reveal animation
+const style = document.createElement('style');
+style.textContent = '.in-view { opacity: 1 !important; transform: translateY(0) !important; }';
+document.head.appendChild(style);
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -46,20 +50,13 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, observerOpts);
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll(
-  '.about__card, .phase, .venue__card, .food__card, .transport__card, .tip__card'
+  '.flight__card, .tl-card, .cl-card, .day__heading'
 ).forEach((el, i) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = `opacity 0.45s ease ${(i % 8) * 0.055}s, transform 0.45s ease ${(i % 8) * 0.055}s`;
   observer.observe(el);
 });
-
-document.addEventListener('animationstart', () => {}, { once: true });
-
-// Apply in-view class
-const style = document.createElement('style');
-style.textContent = '.in-view { opacity: 1 !important; transform: translateY(0) !important; }';
-document.head.appendChild(style);
