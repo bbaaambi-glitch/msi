@@ -23,7 +23,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
   background: var(--dark);
   color: var(--text);
   line-height: 1.6;
@@ -542,7 +542,7 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   cursor: pointer;
   transition: all var(--trans);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 .itab:hover { border-color: var(--blue); color: var(--blue); }
 .itab.active {
