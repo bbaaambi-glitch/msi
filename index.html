@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSI 2025 Korea 여행 가이드</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#hero">
+        <span class="nav__logo-badge">MSI</span>
+        <span class="nav__logo-text">2025 Korea</span>
+      </a>
+      <button class="nav__hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">대회 소개</a></li>
+        <li><a href="#schedule">일정</a></li>
+        <li><a href="#venue">경기장</a></li>
+        <li><a href="#itinerary">여행 코스</a></li>
+        <li><a href="#food">맛집</a></li>
+        <li><a href="#transport">교통</a></li>
+        <li><a href="#tips">여행 팁</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">League of Legends</p>
+      <h1 class="hero__title">MSI 2025<br /><span>KOREA</span></h1>
+      <p class="hero__sub">서울에서 펼쳐지는 글로벌 e스포츠 축제<br />완벽한 여행 가이드로 최고의 경험을 만들어 보세요</p>
+      <div class="hero__cta-group">
+        <a class="btn btn--primary" href="#schedule">일정 보기</a>
+        <a class="btn btn--outline" href="#itinerary">여행 코스</a>
+      </div>
+      <div class="hero__badges">
+        <div class="badge"><span class="badge__num">22</span><span class="badge__label">참가팀</span></div>
+        <div class="badge"><span class="badge__num">3주</span><span class="badge__label">대회 기간</span></div>
+        <div class="badge"><span class="badge__num">서울</span><span class="badge__label">개최 도시</span></div>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>스크롤</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">About MSI 2025</span>
+        <h2 class="section__title">대회 소개</h2>
+        <p class="section__desc">League of Legends Mid-Season Invitational은 전 세계 각 지역 최고의 팀들이 한자리에 모이는 국제 대회입니다. 2025년은 대한민국 서울에서 개최됩니다.</p>
+      </div>
+      <div class="about__grid">
+        <div class="about__card">
+          <div class="about__card-icon">🏆</div>
+          <h3>대회 규모</h3>
+          <p>전 세계 12개 리그에서 선발된 최강팀들이 모여 LoL 세계 최고 자리를 놓고 경쟁합니다.</p>
+        </div>
+        <div class="about__card">
+          <div class="about__card-icon">📅</div>
+          <h3>대회 기간</h3>
+          <p>2025년 5월 1일 ~ 5월 25일, 약 3주간 진행되며 그룹 스테이지부터 결승전까지 열전을 펼칩니다.</p>
+        </div>
+        <div class="about__card">
+          <div class="about__card-icon">🎮</div>
+          <h3>경기 형식</h3>
+          <p>플레이-인 스테이지 → 스위스 스테이지 → 넉아웃 스테이지 → 결승전 순으로 진행됩니다.</p>
+        </div>
+        <div class="about__card">
+          <div class="about__card-icon">📍</div>
+          <h3>개최 장소</h3>
+          <p>서울 중구 LoL Park, 한강 특설 경기장, 그리고 결승전은 KSPO DOME에서 열립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="section section--dark" id="schedule">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Schedule</span>
+        <h2 class="section__title">대회 일정</h2>
+        <p class="section__desc">각 단계별 일정을 확인하고 직관 계획을 세워보세요.</p>
+      </div>
+      <div class="schedule__phases">
+        <div class="phase" data-phase="1">
+          <div class="phase__header">
+            <div class="phase__dot"></div>
+            <div class="phase__meta">
+              <span class="phase__tag">Phase 1</span>
+              <h3 class="phase__name">Play-In Stage</h3>
+              <span class="phase__date">5월 1일 – 5월 7일</span>
+            </div>
+          </div>
+          <div class="phase__body">
+            <p>각 지역 와일드카드 팀들이 본선 진출을 위해 격돌하는 예선 단계입니다.</p>
+            <div class="phase__schedule">
+              <div class="match-row">
+                <span class="match-day">5월 1일 (목)</span>
+                <span class="match-info">개막식 + 그룹 A 경기</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 2일 (금)</span>
+                <span class="match-info">그룹 B 경기</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 3일 (토)</span>
+                <span class="match-info">그룹 A·B 2라운드</span>
+                <span class="match-time">13:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 4일 (일)</span>
+                <span class="match-info">타이브레이커</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 5일 – 7일</span>
+                <span class="match-info">플레이-인 넉아웃</span>
+                <span class="match-time">15:00 KST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="2">
+          <div class="phase__header">
+            <div class="phase__dot"></div>
+            <div class="phase__meta">
+              <span class="phase__tag">Phase 2</span>
+              <h3 class="phase__name">Swiss Stage</h3>
+              <span class="phase__date">5월 9일 – 5월 18일</span>
+            </div>
+          </div>
+          <div class="phase__body">
+            <p>스위스 대진 방식으로 3승 또는 3패가 날 때까지 경기를 진행합니다. 상위 8팀이 넉아웃 진출.</p>
+            <div class="phase__schedule">
+              <div class="match-row">
+                <span class="match-day">5월 9일 (금)</span>
+                <span class="match-info">라운드 1 (0-0 매치업)</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 11일 (일)</span>
+                <span class="match-info">라운드 2 (1-0 vs 1-0)</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 13일 (화)</span>
+                <span class="match-info">라운드 3</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 15일 (목)</span>
+                <span class="match-info">라운드 4</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 17-18일</span>
+                <span class="match-info">라운드 5 (결정전)</span>
+                <span class="match-time">14:00 KST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="3">
+          <div class="phase__header">
+            <div class="phase__dot"></div>
+            <div class="phase__meta">
+              <span class="phase__tag">Phase 3</span>
+              <h3 class="phase__name">Knockout Stage</h3>
+              <span class="phase__date">5월 20일 – 5월 24일</span>
+            </div>
+          </div>
+          <div class="phase__body">
+            <p>8강부터 4강까지 단판 승부. 한 번의 패배로 탈락하는 토너먼트 방식입니다.</p>
+            <div class="phase__schedule">
+              <div class="match-row">
+                <span class="match-day">5월 20일 (화)</span>
+                <span class="match-info">8강 1·2경기</span>
+                <span class="match-time">15:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 21일 (수)</span>
+                <span class="match-info">8강 3·4경기</span>
+                <span class="match-time">15:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 23일 (금)</span>
+                <span class="match-info">4강 1경기</span>
+                <span class="match-time">16:00 KST</span>
+              </div>
+              <div class="match-row">
+                <span class="match-day">5월 24일 (토)</span>
+                <span class="match-info">4강 2경기</span>
+                <span class="match-time">16:00 KST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase phase--final" data-phase="4">
+          <div class="phase__header">
+            <div class="phase__dot"></div>
+            <div class="phase__meta">
+              <span class="phase__tag phase__tag--gold">Grand Final</span>
+              <h3 class="phase__name">결승전</h3>
+              <span class="phase__date">5월 25일 (일)</span>
+            </div>
+          </div>
+          <div class="phase__body">
+            <p>KSPO DOME에서 열리는 MSI 2025 결승전. 전 세계가 주목하는 최고의 무대입니다.</p>
+            <div class="phase__schedule">
+              <div class="match-row match-row--final">
+                <span class="match-day">5월 25일 (일)</span>
+                <span class="match-info">🏆 MSI 2025 Grand Final</span>
+                <span class="match-time">17:00 KST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="section" id="venue">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Venue</span>
+        <h2 class="section__title">경기장 안내</h2>
+        <p class="section__desc">MSI 2025는 서울 내 복수의 경기장에서 개최됩니다.</p>
+      </div>
+      <div class="venue__grid">
+        <div class="venue__card venue__card--main">
+          <div class="venue__img venue__img--lolpark"></div>
+          <div class="venue__info">
+            <span class="venue__badge">메인 경기장</span>
+            <h3>LoL Park</h3>
+            <p class="venue__address">서울 종로구 종로3가 LoL Park</p>
+            <ul class="venue__details">
+              <li><span>수용 인원</span><span>700석</span></li>
+              <li><span>사용 단계</span><span>플레이-인 / 스위스</span></li>
+              <li><span>교통</span><span>3·5호선 종로3가역</span></li>
+            </ul>
+            <div class="venue__access">
+              <span class="access-tag">도보 5분</span>
+              <span class="access-tag">편의시설 완비</span>
+            </div>
+          </div>
+        </div>
+        <div class="venue__card">
+          <div class="venue__img venue__img--hangang"></div>
+          <div class="venue__info">
+            <span class="venue__badge venue__badge--blue">특별 경기장</span>
+            <h3>한강 특설 무대</h3>
+            <p class="venue__address">서울 영등포구 여의도한강공원</p>
+            <ul class="venue__details">
+              <li><span>수용 인원</span><span>5,000명</span></li>
+              <li><span>사용 단계</span><span>특별 이벤트</span></li>
+              <li><span>교통</span><span>5호선 여의나루역</span></li>
+            </ul>
+            <div class="venue__access">
+              <span class="access-tag">야외</span>
+              <span class="access-tag">한강 뷰</span>
+            </div>
+          </div>
+        </div>
+        <div class="venue__card venue__card--grand">
+          <div class="venue__img venue__img--kspo"></div>
+          <div class="venue__info">
+            <span class="venue__badge venue__badge--gold">결승 경기장</span>
+            <h3>KSPO DOME</h3>
+            <p class="venue__address">서울 송파구 올림픽로 424</p>
+            <ul class="venue__details">
+              <li><span>수용 인원</span><span>15,000석</span></li>
+              <li><span>사용 단계</span><span>Grand Final</span></li>
+              <li><span>교통</span><span>9호선 올림픽공원역</span></li>
+            </ul>
+            <div class="venue__access">
+              <span class="access-tag">도보 10분</span>
+              <span class="access-tag">올림픽공원 내</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="section section--dark" id="itinerary">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Itinerary</span>
+        <h2 class="section__title">추천 여행 코스</h2>
+        <p class="section__desc">경기 관람과 함께 서울 최고의 명소를 둘러보는 5일 코스를 소개합니다.</p>
+      </div>
+
+      <div class="itinerary__tabs">
+        <button class="itab active" data-day="1">Day 1</button>
+        <button class="itab" data-day="2">Day 2</button>
+        <button class="itab" data-day="3">Day 3</button>
+        <button class="itab" data-day="4">Day 4</button>
+        <button class="itab" data-day="5">Day 5</button>
+      </div>
+
+      <div class="itinerary__panels">
+        <div class="iday active" id="day-1">
+          <div class="iday__header">
+            <h3>Day 1 — 도착 & 강남 탐방</h3>
+            <span class="iday__theme">입국 첫날의 설렘</span>
+          </div>
+          <div class="iday__timeline">
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오전</span>
+                <h4>인천국제공항 도착</h4>
+                <p>공항 철도(AREX) 또는 리무진 버스로 서울 도심 이동. 숙소 체크인 후 짐 정리.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오후</span>
+                <h4>강남 COEX 방문</h4>
+                <p>별마당 도서관, 아쿠아리움 관람. 근처 봉은사에서 도심 속 힐링.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">저녁</span>
+                <h4>신사동 가로수길</h4>
+                <p>카페, 레스토랑, 편집샵이 즐비한 핫플레이스에서 저녁 식사 및 쇼핑.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="iday" id="day-2">
+          <div class="iday__header">
+            <h3>Day 2 — MSI 직관 & 종로 고궁</h3>
+            <span class="iday__theme">e스포츠와 역사의 만남</span>
+          </div>
+          <div class="iday__timeline">
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오전</span>
+                <h4>경복궁 & 국립민속박물관</h4>
+                <p>조선왕조의 정궁 경복궁 탐방. 한복 대여 체험도 추천.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오후</span>
+                <h4>LoL Park 경기 직관</h4>
+                <p>종로3가역 인근 LoL Park에서 MSI 경기 직관. 일찍 도착해 팬 미팅, 굿즈 구매 준비.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">저녁</span>
+                <h4>인사동 & 광장시장</h4>
+                <p>전통 공예품 쇼핑과 빈대떡, 마약김밥 등 광장시장 먹거리 투어.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="iday" id="day-3">
+          <div class="iday__header">
+            <h3>Day 3 — 홍대 & 이태원</h3>
+            <span class="iday__theme">서울의 젊은 에너지</span>
+          </div>
+          <div class="iday__timeline">
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오전</span>
+                <h4>홍익대학교 앞 홍대거리</h4>
+                <p>K-POP 굿즈샵, 카페 투어. 게이밍 카페에서 LOL 한 판 즐기기.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오후</span>
+                <h4>이태원 & 해방촌</h4>
+                <p>다양한 나라의 음식을 맛볼 수 있는 이태원. 해방촌 빈티지 숍과 감성 카페.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">저녁</span>
+                <h4>N서울타워 (남산)</h4>
+                <p>남산 케이블카 탑승 후 야경 감상. 서울 전경을 한눈에 볼 수 있는 뷰포인트.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="iday" id="day-4">
+          <div class="iday__header">
+            <h3>Day 4 — 한강 & 성수동</h3>
+            <span class="iday__theme">트렌디한 서울 즐기기</span>
+          </div>
+          <div class="iday__timeline">
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오전</span>
+                <h4>여의도 한강공원</h4>
+                <p>자전거 대여 후 한강 라이딩. 편의점 도시락으로 한강 피크닉 즐기기.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오후</span>
+                <h4>성수동 카페 거리</h4>
+                <p>핫한 팝업 스토어와 감성 카페가 모인 성수동 투어. 서울숲도 함께 방문.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">저녁</span>
+                <h4>MSI 4강 경기 직관</h4>
+                <p>Knockout Stage 4강 경기! 응원 도구 준비해서 열띤 응원으로 선수들을 응원하세요.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="iday" id="day-5">
+          <div class="iday__header">
+            <h3>Day 5 — MSI 결승 & 쇼핑</h3>
+            <span class="iday__theme">클라이맥스의 날</span>
+          </div>
+          <div class="iday__timeline">
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오전</span>
+                <h4>동대문 DDP & 쇼핑</h4>
+                <p>동대문 디자인 플라자에서 문화 체험. 주변 쇼핑몰에서 마지막 기념품 구매.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">오후</span>
+                <h4>KSPO DOME 결승 입장</h4>
+                <p>올림픽공원 내 KSPO DOME에서 MSI 2025 Grand Final 관람. 일찍 도착해 분위기 즐기기.</p>
+              </div>
+            </div>
+            <div class="itime-item">
+              <div class="itime-dot"></div>
+              <div class="itime-content">
+                <span class="itime-hour">밤</span>
+                <h4>🏆 챔피언 탄생!</h4>
+                <p>역사적인 순간을 함께하세요. 경기 후 근처 레스토랑에서 축하 만찬으로 마무리.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="section" id="food">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Food & Drink</span>
+        <h2 class="section__title">추천 맛집 & 카페</h2>
+        <p class="section__desc">서울 최고의 음식을 경험해 보세요.</p>
+      </div>
+      <div class="food__grid">
+        <div class="food__card">
+          <div class="food__emoji">🍖</div>
+          <h3>삼겹살 & 고기구이</h3>
+          <p class="food__place">종로 <strong>원할머니 보쌈</strong></p>
+          <p>서울식 보쌈과 삼겹살. 소주와 함께하는 완벽한 한국식 저녁.</p>
+          <span class="food__price">₩15,000~25,000</span>
+        </div>
+        <div class="food__card">
+          <div class="food__emoji">🍜</div>
+          <h3>진라면 & 순대국밥</h3>
+          <p class="food__place">광장시장 <strong>순대국밥 골목</strong></p>
+          <p>새벽부터 영업하는 서민 음식의 성지. 뜨끈한 국밥 한 그릇으로 속 든든하게.</p>
+          <span class="food__price">₩7,000~12,000</span>
+        </div>
+        <div class="food__card">
+          <div class="food__emoji">🥘</div>
+          <h3>부대찌개</h3>
+          <p class="food__place">의정부 <strong>오뎅식당</strong></p>
+          <p>한국 전통 부대찌개의 원조. 라면 사리와 함께 푸짐하게 즐기는 별미.</p>
+          <span class="food__price">₩10,000~15,000</span>
+        </div>
+        <div class="food__card">
+          <div class="food__emoji">🍣</div>
+          <h3>회 & 해산물</h3>
+          <p class="food__place">노량진 <strong>수산시장</strong></p>
+          <p>직접 고른 신선한 해산물을 2층 식당에서 바로 요리해 먹는 색다른 경험.</p>
+          <span class="food__price">₩20,000~50,000</span>
+        </div>
+        <div class="food__card">
+          <div class="food__emoji">☕</div>
+          <h3>카페 투어</h3>
+          <p class="food__place">성수·연남동 <strong>감성 카페</strong></p>
+          <p>독특한 인테리어와 시그니처 음료로 유명한 성수동, 연남동 카페 투어.</p>
+          <span class="food__price">₩6,000~12,000</span>
+        </div>
+        <div class="food__card">
+          <div class="food__emoji">🌮</div>
+          <h3>분식 & 길거리 음식</h3>
+          <p class="food__place">명동 <strong>길거리 포장마차</strong></p>
+          <p>떡볶이, 오뎅, 핫도그, 치즈 감자 등 다채로운 길거리 음식의 천국.</p>
+          <span class="food__price">₩2,000~8,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORT -->
+  <section class="section section--dark" id="transport">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Transport</span>
+        <h2 class="section__title">교통 가이드</h2>
+        <p class="section__desc">서울에서 이동하는 가장 효율적인 방법들을 안내합니다.</p>
+      </div>
+      <div class="transport__grid">
+        <div class="transport__card">
+          <div class="transport__icon">✈️</div>
+          <h3>공항에서 서울로</h3>
+          <div class="transport__options">
+            <div class="toption">
+              <span class="toption__name">공항 철도 (AREX)</span>
+              <span class="toption__time">43분</span>
+              <span class="toption__price">₩9,500</span>
+            </div>
+            <div class="toption">
+              <span class="toption__name">리무진 버스</span>
+              <span class="toption__time">60-90분</span>
+              <span class="toption__price">₩10,000~18,000</span>
+            </div>
+            <div class="toption">
+              <span class="toption__name">택시</span>
+              <span class="toption__time">50-70분</span>
+              <span class="toption__price">₩60,000~80,000</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport__card">
+          <div class="transport__icon">🚇</div>
+          <h3>지하철</h3>
+          <p class="transport__desc">서울 지하철은 9개 노선, 영어 안내 완비. T-money 카드 또는 1회권 이용.</p>
+          <div class="transport__options">
+            <div class="toption">
+              <span class="toption__name">기본 요금</span>
+              <span class="toption__price">₩1,400</span>
+            </div>
+            <div class="toption">
+              <span class="toption__name">T-money 카드</span>
+              <span class="toption__price">버스 환승 할인</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport__card">
+          <div class="transport__icon">🚌</div>
+          <h3>버스</h3>
+          <p class="transport__desc">간선(파란색), 지선(초록색), 광역(빨간색), 마을버스(노란색)로 구분.</p>
+          <div class="transport__options">
+            <div class="toption">
+              <span class="toption__name">일반 버스</span>
+              <span class="toption__price">₩1,300</span>
+            </div>
+            <div class="toption">
+              <span class="toption__name">광역 버스</span>
+              <span class="toption__price">₩2,800</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport__card">
+          <div class="transport__icon">🛵</div>
+          <h3>택시 & 킥보드</h3>
+          <p class="transport__desc">카카오T 앱으로 택시 호출. 킥보드는 킥고잉, 빔 앱으로 이용.</p>
+          <div class="transport__options">
+            <div class="toption">
+              <span class="toption__name">택시 기본요금</span>
+              <span class="toption__price">₩4,800</span>
+            </div>
+            <div class="toption">
+              <span class="toption__name">전동킥보드</span>
+              <span class="toption__price">₩300/분</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transport__subway-map">
+        <h3>경기장별 지하철 노선</h3>
+        <div class="subway__routes">
+          <div class="subway__route">
+            <span class="subway__line subway__line--3">3호선</span>
+            <span class="subway__line subway__line--5">5호선</span>
+            <span class="subway__station">종로3가역</span>
+            <span class="subway__dest">→ LoL Park</span>
+          </div>
+          <div class="subway__route">
+            <span class="subway__line subway__line--5">5호선</span>
+            <span class="subway__station">여의나루역</span>
+            <span class="subway__dest">→ 한강 특설 무대</span>
+          </div>
+          <div class="subway__route">
+            <span class="subway__line subway__line--9">9호선</span>
+            <span class="subway__station">올림픽공원역</span>
+            <span class="subway__dest">→ KSPO DOME</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section" id="tips">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">Travel Tips</span>
+        <h2 class="section__title">여행 필수 팁</h2>
+        <p class="section__desc">한국 여행을 더욱 편리하게 만들어줄 실용적인 정보들입니다.</p>
+      </div>
+      <div class="tips__grid">
+        <div class="tip__card">
+          <div class="tip__num">01</div>
+          <h3>교통카드 & 모바일 결제</h3>
+          <p>T-money 카드를 편의점(GS25, CU, 세븐일레븐)에서 구매하세요. 지하철, 버스, 편의점에서 모두 사용 가능. 삼성페이·애플페이도 대부분 가맹점에서 됩니다.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">02</div>
+          <h3>유심 & 포켓 와이파이</h3>
+          <p>공항 도착 후 바로 유심을 개통하거나 포켓 와이파이를 대여하세요. 데이터 무제한 유심은 약 ₩30,000/10일. 공항에서 사전 예약하면 더 저렴합니다.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">03</div>
+          <h3>숙소 추천 지역</h3>
+          <p><strong>명동·홍대</strong>: 교통 편리, 관광 최적. <strong>강남</strong>: 쇼핑·비즈니스. <strong>종로</strong>: LoL Park 근접. MSI 기간엔 조기 예약 필수!</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">04</div>
+          <h3>티켓 구매 방법</h3>
+          <p>MSI 공식 사이트에서 온라인 예매. Interpark, YES24에서도 구매 가능. 결승전 티켓은 특히 조기 매진되므로 일정 공개 즉시 구매를 권장합니다.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">05</div>
+          <h3>편의점 활용</h3>
+          <p>GS25, CU, 세븐일레븐은 24시간 운영. 도시락, 삼각김밥, 즉석식품이 저렴하고 맛있습니다. ATM 이용, 택배 수령, 공과금 납부도 가능한 만능 공간.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">06</div>
+          <h3>필수 앱 목록</h3>
+          <p><strong>카카오맵</strong>: 지도·대중교통. <strong>네이버 파파고</strong>: 실시간 번역. <strong>카카오T</strong>: 택시 호출. <strong>배달의민족</strong>: 음식 배달. <strong>클립</strong>: MSI 공식 앱.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">07</div>
+          <h3>환전 & 현금</h3>
+          <p>시중은행 환전 우대 서비스 이용 권장. 명동 사설 환전소가 종종 더 유리한 환율을 제공합니다. 소규모 식당, 전통시장은 현금 선호. 여유분 현금 보유 필수.</p>
+        </div>
+        <div class="tip__card">
+          <div class="tip__num">08</div>
+          <h3>경기장 관람 에티켓</h3>
+          <p>경기 중 큰 응원은 허용되나 지정석 착석 준수. 음식물 반입 제한 있음. 코인 로커 보관 권장. 사진·영상 촬영은 공식 안내에 따라 이용하세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo-badge">MSI</span>
+          <span class="footer__brand-text">2025 Korea Travel Guide</span>
+          <p>비공식 팬 제작 여행 정보 사이트입니다.<br />공식 정보는 Riot Games 공식 채널을 참고해 주세요.</p>
+        </div>
+        <div class="footer__links">
+          <h4>바로가기</h4>
+          <ul>
+            <li><a href="#about">대회 소개</a></li>
+            <li><a href="#schedule">일정</a></li>
+            <li><a href="#venue">경기장</a></li>
+            <li><a href="#itinerary">여행 코스</a></li>
+            <li><a href="#food">맛집</a></li>
+            <li><a href="#transport">교통</a></li>
+            <li><a href="#tips">여행 팁</a></li>
+          </ul>
+        </div>
+        <div class="footer__notice">
+          <h4>안내</h4>
+          <p>본 사이트의 일정·정보는 참고용이며 실제와 다를 수 있습니다. 공식 일정은 Riot Games 공식 사이트에서 확인하세요.</p>
+          <p class="footer__copy">© 2025 MSI Korea Fan Guide</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" id="backToTop" href="#hero" aria-label="맨 위로">↑</a>
+
+  <script src="app.js"></script>
+</body>
+</html>
