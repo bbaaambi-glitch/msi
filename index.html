@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MSI 2026 韓國電競旅行｜7/9–7/13</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -23,11 +24,7 @@
       </button>
       <ul class="nav__links" id="navLinks">
         <li><a href="#flights">航班</a></li>
-        <li><a href="#day1">Day 1</a></li>
-        <li><a href="#day2">Day 2</a></li>
-        <li><a href="#day3">Day 3</a></li>
-        <li><a href="#day4">Day 4</a></li>
-        <li><a href="#day5">Day 5</a></li>
+        <li><a href="#itinerary">行程規劃</a></li>
         <li><a href="#checklist">行前清單</a></li>
       </ul>
     </div>
@@ -85,7 +82,6 @@
         <h2 class="section__title">航班資訊</h2>
       </div>
       <div class="flights__grid">
-        <!-- Outbound -->
         <div class="flight__card">
           <div class="flight__header">
             <span class="flight__dir outbound">去程</span>
@@ -100,9 +96,7 @@
               <span class="flight__date">7 / 9 （四）</span>
             </div>
             <div class="flight__mid">
-              <div class="flight__line">
-                <div class="flight__plane">✈</div>
-              </div>
+              <div class="flight__line"><div class="flight__plane">✈</div></div>
               <span class="flight__duration">約 2h 30m</span>
             </div>
             <div class="flight__port flight__port--right">
@@ -118,7 +112,6 @@
             <span class="fdetail">T2 入境</span>
           </div>
         </div>
-        <!-- Return -->
         <div class="flight__card">
           <div class="flight__header">
             <span class="flight__dir return">回程</span>
@@ -133,9 +126,7 @@
               <span class="flight__date">7 / 13 （一）</span>
             </div>
             <div class="flight__mid">
-              <div class="flight__line">
-                <div class="flight__plane">✈</div>
-              </div>
+              <div class="flight__line"><div class="flight__plane">✈</div></div>
               <span class="flight__duration">約 2h 40m</span>
             </div>
             <div class="flight__port flight__port--right">
@@ -155,367 +146,439 @@
     </div>
   </section>
 
-  <!-- DAY 1 -->
-  <section class="section section--dark day-section" id="day1">
+  <!-- ITINERARY (v1 tab style + map) -->
+  <section class="section section--dark" id="itinerary">
     <div class="container">
-      <div class="day__heading">
-        <div class="day__num-wrap">
-          <span class="day__num">01</span>
-        </div>
-        <div class="day__title-wrap">
-          <h2 class="day__title">抵達首爾｜自由探索</h2>
-          <span class="day__date">7 月 9 日（四）</span>
-        </div>
+      <div class="section__header">
+        <span class="section__tag">Itinerary</span>
+        <h2 class="section__title">五日行程規劃</h2>
+        <p class="section__desc">首爾與大田的完整電競旅程，每一個關鍵時刻都不能錯過。</p>
       </div>
 
-      <div class="timeline">
+      <div class="itinerary__tabs">
+        <button class="itab active" data-day="1">
+          <span class="itab__day">Day 1</span>
+          <span class="itab__sub">7/9 抵達</span>
+        </button>
+        <button class="itab" data-day="2">
+          <span class="itab__day">Day 2</span>
+          <span class="itab__sub">7/10 樂園</span>
+        </button>
+        <button class="itab" data-day="3">
+          <span class="itab__day">Day 3</span>
+          <span class="itab__sub">7/11 大田</span>
+        </button>
+        <button class="itab" data-day="4">
+          <span class="itab__day">Day 4</span>
+          <span class="itab__sub">7/12 決賽</span>
+        </button>
+        <button class="itab" data-day="5">
+          <span class="itab__day">Day 5</span>
+          <span class="itab__sub">7/13 返程</span>
+        </button>
+      </div>
 
-        <div class="tl-item">
-          <div class="tl-time">16:50</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>仁川機場 T2 落地</h3>
-            <p>出關約需 <strong>45–60 分鐘</strong>，請保持耐心。順利入境後進行後續交通安排。</p>
-          </div>
-        </div>
+      <div class="itinerary__body">
 
-        <div class="tl-item">
-          <div class="tl-time">18:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span><span class="tag tag--shopping">購物</span></div>
-            <h3>視出關時間決定路線</h3>
-            <div class="branch-box">
-              <div class="branch">
-                <span class="branch__label branch__label--a">早出關</span>
-                <p>搭 <strong>AREX 直達車</strong>（43 分鐘）→ 明洞 → <strong>樂天百貨 HOKA</strong> 選鞋</p>
+        <!-- LEFT: day panels -->
+        <div class="itinerary__panels">
+
+          <!-- DAY 1 -->
+          <div class="iday active" id="day-1">
+            <div class="iday__header">
+              <h3>Day 1 — 抵達首爾｜自由探索</h3>
+              <span class="iday__theme">踏上首爾的第一步</span>
+            </div>
+            <div class="iday__timeline">
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">16:50</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>仁川機場 T2 落地</h4>
+                  <p>出關約需 <strong>45–60 分鐘</strong>，請保持耐心。入境後進行後續交通安排。</p>
+                </div>
               </div>
-              <div class="branch">
-                <span class="branch__label branch__label--b">晚出關</span>
-                <p>搭 <strong>機場巴士 6011</strong> → 直達 <strong>安國洞</strong>，省時省力直達住宿</p>
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">18:00</span>
+                    <div class="tl-tags">
+                      <span class="tag tag--transport">交通</span>
+                      <span class="tag tag--shopping">購物</span>
+                    </div>
+                  </div>
+                  <h4>視出關時間決定路線</h4>
+                  <div class="branch-box">
+                    <div class="branch">
+                      <span class="branch__label branch__label--a">早出關</span>
+                      <p>搭 <strong>AREX 直達車</strong>（43 分鐘）→ 明洞 → <strong>樂天百貨 HOKA</strong> 選鞋</p>
+                    </div>
+                    <div class="branch">
+                      <span class="branch__label branch__label--b">晚出關</span>
+                      <p>搭 <strong>機場巴士 6011</strong> → 直達 <strong>安國洞</strong>，省時省力</p>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">19:30</span>
+                    <div class="tl-tags"><span class="tag tag--stay">住宿</span></div>
+                  </div>
+                  <h4>韓屋酒店 Dam 入住</h4>
+                  <p>📍 鐘路區雲泥洞 37-2｜安國站步行 <strong>386m</strong>。以百年韓屋改建，鄰近景福宮與益善洞。</p>
+                </div>
+              </div>
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">20:00</span>
+                    <div class="tl-tags"><span class="tag tag--food">美食</span></div>
+                  </div>
+                  <h4>益善洞散步 + 晚餐</h4>
+                  <p><strong>Ikseon Aetteut</strong> 創意韓食，單人友善；或選擇附近的 <strong>鐘路烤肉</strong>。</p>
+                  <p class="tl-note">益善洞是首爾最美的韓屋胡同，夜晚氛圍絕佳，飯後適合閒逛拍照。</p>
+                </div>
+              </div>
+
+              <div class="itime-item itime-item--optional">
+                <div class="itime-dot itime-dot--opt"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">彈性</span>
+                    <div class="tl-tags"><span class="tag tag--esports">電競</span></div>
+                  </div>
+                  <h4>T1 Base Camp / GGX（如有體力）</h4>
+                  <p>兩間均 <strong>24 小時</strong>營業，有精神再去朝聖，沒體力留到明天也沒問題。</p>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
 
-        <div class="tl-item">
-          <div class="tl-time">19:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--stay">住宿</span></div>
-            <h3>韓屋酒店 Dam 入住</h3>
-            <p>📍 鐘路區雲泥洞 37-2｜安國站步行 <strong>386m</strong></p>
-            <p class="tl-note">以百年韓屋改建，地理位置極佳，鄰近景福宮與益善洞。</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">20:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--food">美食</span></div>
-            <h3>益善洞散步 + 晚餐</h3>
-            <p><strong>Ikseon Aetteut</strong>（이익선애뜻）創意韓食，單人友善；或選擇附近的 <strong>鐘路烤肉</strong>。</p>
-            <p class="tl-note">益善洞是首爾最美的韓屋胡同，夜晚氛圍絕佳，飯後很適合閒逛拍照。</p>
-          </div>
-        </div>
-
-        <div class="tl-item tl-item--optional">
-          <div class="tl-time">彈性</div>
-          <div class="tl-dot tl-dot--opt"></div>
-          <div class="tl-card tl-card--optional">
-            <div class="tl-tags"><span class="tag tag--esports">電競</span></div>
-            <h3>T1 Base Camp / GGX（如有體力）</h3>
-            <p>兩間均 <strong>24 小時</strong>營業，長途飛行後若還有精神可以去朝聖，沒體力留到明天也沒問題。</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- DAY 2 -->
-  <section class="section day-section" id="day2">
-    <div class="container">
-      <div class="day__heading">
-        <div class="day__num-wrap">
-          <span class="day__num">02</span>
-        </div>
-        <div class="day__title-wrap">
-          <h2 class="day__title">愛寶樂園 + 購物</h2>
-          <span class="day__date">7 月 10 日（五）</span>
-        </div>
-      </div>
-
-      <div class="timeline">
-
-        <div class="tl-item">
-          <div class="tl-time">09:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>鐘路 3 街站（12 號出口）搭穿梭巴士</h3>
-            <p>住宿步行約 10 分鐘可達。<strong>易遊網預購</strong> TWD 314 來回，即買即用，免排隊。</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">10:40</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--theme">主題樂園</span></div>
-            <h3>愛寶樂園</h3>
-            <div class="highlight-list">
-              <div class="hl-item">🎢 <strong>T Express</strong> 木造雲霄飛車（必搭！）</div>
-              <div class="hl-item">🦁 <strong>Safari 動物園</strong> 車內近距離看動物</div>
-              <div class="hl-item">🎆 <strong>晚上煙火秀</strong>（夏季限定，約 21:00）</div>
+          <!-- DAY 2 -->
+          <div class="iday" id="day-2">
+            <div class="iday__header">
+              <h3>Day 2 — 愛寶樂園 + 購物</h3>
+              <span class="iday__theme">全力衝刺的一天</span>
             </div>
-            <p class="tl-note">7 月為梅雨季，出發前請確認天氣預報，並備好折疊傘。</p>
-          </div>
-        </div>
+            <div class="iday__timeline">
 
-        <div class="tl-item">
-          <div class="tl-time">18:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>搭回程巴士，明洞下車</h3>
-            <p>約 19:30 抵達明洞，可開始晚間購物行程。</p>
-          </div>
-        </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">09:30</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>鍾路 3 街站（12 號出口）搭穿梭巴士</h4>
+                  <p>住宿步行約 10 分鐘。<strong>易遊網預購</strong> TWD 314 來回，即買即用，免排隊購票。</p>
+                </div>
+              </div>
 
-        <div class="tl-item">
-          <div class="tl-time">19:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--shopping">購物</span></div>
-            <h3>樂天百貨 HOKA <span class="urgent-badge">⚠️ 要衝！</span></h3>
-            <p>位於 <strong>7F</strong>，週五營業至 <strong>20:30</strong>，下車後需快速前往。</p>
-            <p class="tl-note">備案：附近 <strong>ABC Mart Grand Stage</strong> 開到 22:30，不怕趕不上。</p>
-          </div>
-        </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">10:40</span>
+                    <div class="tl-tags"><span class="tag tag--theme">主題樂園</span></div>
+                  </div>
+                  <h4>愛寶樂園</h4>
+                  <div class="highlight-list">
+                    <div class="hl-item">🎢 <strong>T Express</strong> 木造雲霄飛車（必搭！）</div>
+                    <div class="hl-item">🦁 <strong>Safari 動物園</strong> 車內近距離看動物</div>
+                    <div class="hl-item">🎆 <strong>晚上煙火秀</strong>（夏季限定，約 21:00）</div>
+                  </div>
+                  <p class="tl-note">7 月梅雨季，出發前確認天氣預報，備好折疊傘。</p>
+                </div>
+              </div>
 
-        <div class="tl-item">
-          <div class="tl-time">20:30+</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--esports">電競</span></div>
-            <h3>T1 Base Camp（弘大）+ GGX（東大門）</h3>
-            <p>兩間均 <strong>24 小時</strong>。另可視體力安排 <strong>LoL Park</strong> 或 <strong>KT Café</strong>。</p>
-          </div>
-        </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">18:30</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>搭回程巴士，明洞下車</h4>
+                  <p>約 <strong>19:30</strong> 抵達明洞，可開始晚間購物行程。</p>
+                </div>
+              </div>
 
-      </div>
-    </div>
-  </section>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">19:30</span>
+                    <div class="tl-tags"><span class="tag tag--shopping">購物</span></div>
+                  </div>
+                  <h4>樂天百貨 HOKA <span class="urgent-badge">⚠️ 要衝！</span></h4>
+                  <p>位於 <strong>7F</strong>，週五營業至 <strong>20:30</strong>，下車後需快速前往。</p>
+                  <p class="tl-note">備案：附近 <strong>ABC Mart Grand Stage</strong> 開到 22:30，不怕趕不上。</p>
+                </div>
+              </div>
 
-  <!-- DAY 3 -->
-  <section class="section section--dark day-section" id="day3">
-    <div class="container">
-      <div class="day__heading">
-        <div class="day__num-wrap day__num-wrap--msi">
-          <span class="day__num">03</span>
-        </div>
-        <div class="day__title-wrap">
-          <h2 class="day__title">電競景點 → 移師大田</h2>
-          <span class="day__date">7 月 11 日（六）｜<span class="msi-tag-inline">MSI 下決賽 🎮</span></span>
-        </div>
-      </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">20:30+</span>
+                    <div class="tl-tags"><span class="tag tag--esports">電競</span></div>
+                  </div>
+                  <h4>T1 Base Camp（弘大）+ GGX（東大門）</h4>
+                  <p>兩間均 <strong>24 小時</strong>。另可視體力安排 <strong>LoL Park</strong> 或 <strong>KT Café</strong>。</p>
+                </div>
+              </div>
 
-      <div class="timeline">
-
-        <div class="tl-item">
-          <div class="tl-time">09:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--food">美食</span></div>
-            <h3>安國站周邊閒晃</h3>
-            <p>仁寺洞、益善洞找早餐，韓式早午餐或便利商店皆可，為今天充足行程補充能量。</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">11:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--esports">電競</span><span class="tag tag--shopping">購物</span></div>
-            <h3>LoL Park + Riot Store（鐘路）</h3>
-            <p>從住宿步行可達，營業至 <strong>20:00</strong>。購買官方周邊、拍照打卡，電競迷必訪。</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">11:05</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>帶行李搭地鐵至首爾站（寄行李）</h3>
-            <p>抵達首爾站後，至 <strong>樂天超市客服中心</strong>免費寄放行李（限 2 小時），輕鬆後續行程。</p>
-          </div>
-        </div>
-
-        <div class="tl-item tl-item--highlight">
-          <div class="tl-time">11:58</div>
-          <div class="tl-dot tl-dot--gold"></div>
-          <div class="tl-card tl-card--highlight">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>KTX 首爾站 → 大田站</h3>
-            <p>約 <strong>50 分鐘</strong>抵達大田。請提前在 <strong>Klook</strong> 或 <strong>Korail 官網</strong>購票！</p>
-            <p class="tl-note alert-note">⚠️ MSI 期間座位非常搶手，越早訂越好！</p>
-          </div>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-time">13:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--food">美食</span></div>
-            <h3>大田 Check-in + 大善刀切麵午餐</h3>
-            <p><strong>대선칼국수</strong>｜11:30–14:30 營業，單人友善。</p>
-            <div class="menu-box">
-              <span class="menu-item">招牌刀切麵</span>
-              <span class="menu-item">水肉（수육）</span>
             </div>
           </div>
-        </div>
 
-        <div class="tl-item tl-item--msi">
-          <div class="tl-time">下午</div>
-          <div class="tl-dot tl-dot--msi"></div>
-          <div class="tl-card tl-card--msi">
-            <div class="tl-tags"><span class="tag tag--msi">MSI 🎮</span></div>
-            <h3>MSI 下決賽</h3>
-            <p>📍 <strong>大田會展中心二館（DCC）</strong></p>
-            <p>門票透過 <strong>Interpark</strong> 購買，建議提早到場感受賽前氣氛，並搶購限定周邊。</p>
-          </div>
-        </div>
+          <!-- DAY 3 -->
+          <div class="iday" id="day-3">
+            <div class="iday__header">
+              <h3>Day 3 — 電競景點 → 移師大田</h3>
+              <span class="iday__theme iday__theme--msi">MSI 下決賽 🎮</span>
+            </div>
+            <div class="iday__timeline">
 
-      </div>
-    </div>
-  </section>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">09:00</span>
+                    <div class="tl-tags"><span class="tag tag--food">美食</span></div>
+                  </div>
+                  <h4>安國站周邊閒晃</h4>
+                  <p>仁寺洞、益善洞找早餐，為今天充足行程補充能量。</p>
+                </div>
+              </div>
 
-  <!-- DAY 4 -->
-  <section class="section day-section" id="day4">
-    <div class="container">
-      <div class="day__heading">
-        <div class="day__num-wrap day__num-wrap--gold">
-          <span class="day__num">04</span>
-        </div>
-        <div class="day__title-wrap">
-          <h2 class="day__title">MSI 大決賽 🏆</h2>
-          <span class="day__date">7 月 12 日（日）｜<span class="msi-tag-inline msi-tag-inline--gold">Grand Final</span></span>
-        </div>
-      </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">11:00</span>
+                    <div class="tl-tags">
+                      <span class="tag tag--esports">電競</span>
+                      <span class="tag tag--shopping">購物</span>
+                    </div>
+                  </div>
+                  <h4>LoL Park + Riot Store（鐘路）</h4>
+                  <p>從住宿步行可達，營業至 <strong>20:00</strong>。購買官方周邊、拍照打卡，電競迷必訪。</p>
+                </div>
+              </div>
 
-      <div class="timeline">
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">11:05</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>帶行李搭地鐵至首爾站（寄行李）</h4>
+                  <p>抵達首爾站後，至 <strong>樂天超市客服中心</strong>免費寄放行李（限 2 小時）。</p>
+                </div>
+              </div>
 
-        <div class="tl-item">
-          <div class="tl-time">早上</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--food">美食</span></div>
-            <h3>聖心堂麵包（성심당）</h3>
-            <p>1956 年創立的大田代表性名物，連 <strong>教皇訪韓</strong>時都光顧過。開門 <strong>08:00</strong>，記得早點去排隊！</p>
-            <div class="highlight-list">
-              <div class="hl-item">🥐 招牌奶油麵包</div>
-              <div class="hl-item">🍰 芋泥泡芙（人氣限量）</div>
+              <div class="itime-item itime-item--key">
+                <div class="itime-dot itime-dot--gold"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour itime-hour--gold">11:58</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>KTX 首爾站 → 大田站</h4>
+                  <p>約 <strong>50 分鐘</strong>抵達大田。請提前在 <strong>Klook</strong> 或 <strong>Korail 官網</strong>購票！</p>
+                  <p class="tl-note alert-note">⚠️ MSI 期間座位非常搶手，越早訂越好！</p>
+                </div>
+              </div>
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">13:00</span>
+                    <div class="tl-tags"><span class="tag tag--food">美食</span></div>
+                  </div>
+                  <h4>大田 Check-in + 大善刀切麵午餐</h4>
+                  <p><strong>대선칼국수</strong>｜11:30–14:30 營業，單人友善。</p>
+                  <div class="menu-box">
+                    <span class="menu-item">招牌刀切麵</span>
+                    <span class="menu-item">水肉（수육）</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="itime-item itime-item--msi">
+                <div class="itime-dot itime-dot--msi"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour itime-hour--msi">下午</span>
+                    <div class="tl-tags"><span class="tag tag--msi">MSI 🎮</span></div>
+                  </div>
+                  <h4>MSI 下決賽</h4>
+                  <p>📍 <strong>大田會展中心二館（DCC）</strong></p>
+                  <p>門票透過 <strong>Interpark</strong> 購買，建議提早到場感受賽前氣氛。</p>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
 
-        <div class="tl-item tl-item--msi tl-item--grand">
-          <div class="tl-time">下午</div>
-          <div class="tl-dot tl-dot--grand"></div>
-          <div class="tl-card tl-card--grand">
-            <div class="tl-tags"><span class="tag tag--msi">MSI 🏆</span></div>
-            <h3>MSI 2026 大決賽</h3>
-            <p>📍 <strong>大田會展中心二館（DCC）</strong></p>
-            <p>提早進場換取限定活動周邊，全球最強的兩支隊伍在此決一死戰。這是你千里迢迢來到韓國的最重要時刻！</p>
-            <div class="grand-final-note">
-              <span>🎉 見證冠軍誕生</span>
+          <!-- DAY 4 -->
+          <div class="iday" id="day-4">
+            <div class="iday__header">
+              <h3>Day 4 — MSI 大決賽 🏆</h3>
+              <span class="iday__theme iday__theme--gold">Grand Final · 旅程最高潮</span>
+            </div>
+            <div class="iday__timeline">
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">早上</span>
+                    <div class="tl-tags"><span class="tag tag--food">美食</span></div>
+                  </div>
+                  <h4>聖心堂麵包（성심당）</h4>
+                  <p>1956 年創立的大田代表性名物，連 <strong>教皇訪韓</strong>時都光顧過。開門 <strong>08:00</strong>，記得早點排隊！</p>
+                  <div class="highlight-list">
+                    <div class="hl-item">🥐 招牌奶油麵包</div>
+                    <div class="hl-item">🍰 芋泥泡芙（人氣限量）</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="itime-item itime-item--msi itime-item--grand">
+                <div class="itime-dot itime-dot--grand"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour itime-hour--gold">下午</span>
+                    <div class="tl-tags"><span class="tag tag--msi">MSI 🏆</span></div>
+                  </div>
+                  <h4>MSI 2026 大決賽</h4>
+                  <p>📍 <strong>大田會展中心二館（DCC）</strong></p>
+                  <p>提早進場換取限定活動周邊，全球最強的兩支隊伍在此決一死戰。</p>
+                  <div class="grand-final-note">
+                    <span>🎉 見證冠軍誕生的歷史時刻</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">賽後</span>
+                    <div class="tl-tags">
+                      <span class="tag tag--food">美食</span>
+                      <span class="tag tag--shopping">購物</span>
+                    </div>
+                  </div>
+                  <h4>大田夜市慶祝宵夜 + 掃貨</h4>
+                  <p>在大田夜市享用宵夜，慶祝精彩賽事。</p>
+                  <p>📍 <strong>Lotte Mart 儒城店</strong>開至 <strong>23:00</strong>，零食、泡麵、伴手禮一次搞定。</p>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
 
-        <div class="tl-item">
-          <div class="tl-time">賽後</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--food">美食</span><span class="tag tag--shopping">購物</span></div>
-            <h3>大田夜市慶祝宵夜 + 掃貨</h3>
-            <p>在大田夜市享用宵夜，慶祝精彩賽事。</p>
-            <p>📍 <strong>Lotte Mart 儒城店</strong>開至 <strong>23:00</strong>，零食、泡麵、伴手禮一次搞定。</p>
-          </div>
-        </div>
+          <!-- DAY 5 -->
+          <div class="iday" id="day-5">
+            <div class="iday__header">
+              <h3>Day 5 — 首爾站掃貨 → 返程</h3>
+              <span class="iday__theme">帶著滿滿回憶回家</span>
+            </div>
+            <div class="iday__timeline">
 
-      </div>
-    </div>
-  </section>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">10:30</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>退房，搭 KTX 大田 → 首爾站</h4>
+                  <p>約 <strong>50 分鐘</strong>，<strong>11:20</strong> 抵達首爾站。</p>
+                </div>
+              </div>
 
-  <!-- DAY 5 -->
-  <section class="section section--dark day-section" id="day5">
-    <div class="container">
-      <div class="day__heading">
-        <div class="day__num-wrap">
-          <span class="day__num">05</span>
-        </div>
-        <div class="day__title-wrap">
-          <h2 class="day__title">首爾站掃貨 → 返程</h2>
-          <span class="day__date">7 月 13 日（一）</span>
-        </div>
-      </div>
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">11:30</span>
+                    <div class="tl-tags"><span class="tag tag--shopping">購物</span></div>
+                  </div>
+                  <h4>樂天超市（首爾站內）瘋狂掃貨</h4>
+                  <div class="highlight-list">
+                    <div class="hl-item">🍜 各種泡麵（農心、三養）</div>
+                    <div class="hl-item">🍌 香蕉牛奶（必買）</div>
+                    <div class="hl-item">🌿 海苔禮盒</div>
+                    <div class="hl-item">🍫 零食大禮包</div>
+                  </div>
+                </div>
+              </div>
 
-      <div class="timeline">
+              <div class="itime-item">
+                <div class="itime-dot"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour">12:30</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>搭 AREX 直達車 → 仁川 T2</h4>
+                  <p><strong>43 分鐘</strong>，約 <strong>13:15</strong> 抵達。起飛前 3 小時到達，充裕辦理登機。</p>
+                  <p class="tl-note">記得到免稅店辦理退稅（TAX FREE），機場出境後退稅通道。</p>
+                </div>
+              </div>
 
-        <div class="tl-item">
-          <div class="tl-time">10:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>退房，搭 KTX 大田 → 首爾站</h3>
-            <p>約 <strong>50 分鐘</strong>，<strong>11:20</strong> 抵達首爾站。</p>
-          </div>
-        </div>
+              <div class="itime-item itime-item--key">
+                <div class="itime-dot itime-dot--gold"></div>
+                <div class="itime-content">
+                  <div class="itime-header">
+                    <span class="itime-hour itime-hour--gold">16:10</span>
+                    <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
+                  </div>
+                  <h4>KE2027 起飛 ✈️</h4>
+                  <p>空巴 A330-300，預計 <strong>17:50</strong> 抵達桃園。帶著滿滿的回憶與戰利品，平安返台！</p>
+                </div>
+              </div>
 
-        <div class="tl-item">
-          <div class="tl-time">11:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--shopping">購物</span></div>
-            <h3>樂天超市（首爾站內）瘋狂掃貨</h3>
-            <p>最後一波伴手禮採購，一站解決！</p>
-            <div class="highlight-list">
-              <div class="hl-item">🍜 各種泡麵（農心、三養）</div>
-              <div class="hl-item">🍌 香蕉牛奶（必買）</div>
-              <div class="hl-item">🌿 海苔禮盒</div>
-              <div class="hl-item">🍫 零食大禮包</div>
             </div>
           </div>
-        </div>
 
-        <div class="tl-item">
-          <div class="tl-time">12:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>搭 AREX 直達車 → 仁川 T2</h3>
-            <p><strong>43 分鐘</strong>，約 <strong>13:15</strong> 抵達機場。起飛前 <strong>3 小時</strong>到達，充裕辦理登機手續。</p>
-            <p class="tl-note">記得到免稅店辦理退稅（TAX FREE），機場退稅通道在出境後。</p>
+        </div><!-- end panels -->
+
+        <!-- RIGHT: map -->
+        <div class="itinerary__map-col">
+          <div class="map__wrap">
+            <div id="trip-map"></div>
+          </div>
+          <div class="map-legend">
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#0bc4e3"></span>交通</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#f97316"></span>美食</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#22c55e"></span>購物</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#a855f7"></span>電競</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#c89b3c"></span>MSI</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#ec4899"></span>住宿</div>
+            <div class="map-legend__item"><span class="map-legend__dot" style="background:#ef4444"></span>樂園</div>
           </div>
         </div>
 
-        <div class="tl-item tl-item--highlight">
-          <div class="tl-time">16:10</div>
-          <div class="tl-dot tl-dot--gold"></div>
-          <div class="tl-card tl-card--highlight">
-            <div class="tl-tags"><span class="tag tag--transport">交通</span></div>
-            <h3>KE2027 起飛 ✈️</h3>
-            <p>空巴 A330-300，預計 <strong>17:50</strong> 抵達桃園。帶著滿滿的回憶與戰利品，平安返台！</p>
-          </div>
-        </div>
-
-      </div>
+      </div><!-- end itinerary__body -->
     </div>
   </section>
 
@@ -535,9 +598,7 @@
             <h3>MSI 門票</h3>
             <p>Interpark 購買。<strong>4/23 起</strong>國際票開賣，越快越好！下決賽 + 大決賽各一張。</p>
           </div>
-          <div class="cl-status" id="cl-1" onclick="toggleCheck('cl-1')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-1" onclick="toggleCheck('cl-1')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card cl-card--urgent">
@@ -546,9 +607,7 @@
             <h3>KTX 車票</h3>
             <p><strong>Klook</strong> 或 <strong>Korail 官網</strong>訂票。7/11（首爾→大田）、7/13（大田→首爾），MSI 期間極搶手！</p>
           </div>
-          <div class="cl-status" id="cl-2" onclick="toggleCheck('cl-2')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-2" onclick="toggleCheck('cl-2')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
@@ -557,9 +616,7 @@
             <h3>愛寶樂園穿梭巴士</h3>
             <p><strong>易遊網</strong>預購來回票 TWD 314，即買即用，免在現場排隊購票。</p>
           </div>
-          <div class="cl-status" id="cl-3" onclick="toggleCheck('cl-3')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-3" onclick="toggleCheck('cl-3')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
@@ -568,9 +625,7 @@
             <h3>台哥大漫遊 4 天方案</h3>
             <p>7/9 啟用 + 96 小時，7/13 班機前剛好夠用。出發前在 App 或門市開通。</p>
           </div>
-          <div class="cl-status" id="cl-4" onclick="toggleCheck('cl-4')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-4" onclick="toggleCheck('cl-4')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
@@ -579,9 +634,7 @@
             <h3>氣候同行卡 2 日券（₩8,000）</h3>
             <p>Day 1–2 首爾使用，Day 3 前往大田後改用 T-money 卡，避免多張卡混用。</p>
           </div>
-          <div class="cl-status" id="cl-5" onclick="toggleCheck('cl-5')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-5" onclick="toggleCheck('cl-5')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
@@ -596,9 +649,7 @@
             </div>
             <p>出發前設定好帳號與付款方式，到了首爾立刻可用。</p>
           </div>
-          <div class="cl-status" id="cl-6" onclick="toggleCheck('cl-6')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-6" onclick="toggleCheck('cl-6')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
@@ -607,20 +658,16 @@
             <h3>折疊傘</h3>
             <p>7 月正值韓國梅雨季，愛寶樂園當天尤其要注意天氣預報，帶傘絕對不吃虧。</p>
           </div>
-          <div class="cl-status" id="cl-7" onclick="toggleCheck('cl-7')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-7" onclick="toggleCheck('cl-7')"><div class="cl-check"></div></div>
         </div>
 
         <div class="cl-card">
           <div class="cl-icon">🧾</div>
           <div class="cl-content">
             <h3>退稅收據（TAX FREE）</h3>
-            <p>購物時記得索取退稅收據，單筆 ₩30,000 以上即可退稅。機場或市區皆可辦理退稅。</p>
+            <p>購物時記得索取退稅收據，單筆 ₩30,000 以上即可退稅。機場或市區皆可辦理。</p>
           </div>
-          <div class="cl-status" id="cl-8" onclick="toggleCheck('cl-8')">
-            <div class="cl-check"></div>
-          </div>
+          <div class="cl-status" id="cl-8" onclick="toggleCheck('cl-8')"><div class="cl-check"></div></div>
         </div>
 
       </div>
@@ -634,7 +681,6 @@
           <div class="cl-progress__fill" id="clProgressFill"></div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -653,11 +699,8 @@
           <h4>行程導覽</h4>
           <ul>
             <li><a href="#flights">航班資訊</a></li>
-            <li><a href="#day1">Day 1 — 抵達首爾</a></li>
-            <li><a href="#day2">Day 2 — 愛寶樂園</a></li>
-            <li><a href="#day3">Day 3 — 移師大田</a></li>
-            <li><a href="#day4">Day 4 — 大決賽</a></li>
-            <li><a href="#day5">Day 5 — 返程</a></li>
+            <li><a href="#itinerary">行程規劃</a></li>
+            <li><a href="#checklist">行前清單</a></li>
           </ul>
         </div>
         <div class="footer__notice">
@@ -671,6 +714,7 @@
 
   <a class="back-to-top" id="backToTop" href="#hero" aria-label="回到頂部">↑</a>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
